@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <link rel="stylesheet" href="css/listStyle.css">
+</head>
+<body>
+    <main>
+    <input type="text" id="task" placeholder="Enter Your Task....." autofocus>
+    <input type="submit" value="add" onclick="add()" id="btn">
+</main>
+    <ul id="myUL">
+        <li>Task-1</li>
+        <li>Task-2</li>
+        <li>Task-3</li>
+    </ul>
+
+    <script>
+var list = document.getElementsByTagName("LI")
+
+for (var i = 0; i < list.length; i++){
+  var span = document.createElement("SPAN")
+  var txt = document.createTextNode('\u00D7')
+  span.className = "close"
+  span.appendChild(txt)
+  list[i].appendChild(span)
+}
+var close = document.getElementsByClassName("close")
+for (i = 0; i < close.length; i++){
+close[i].onclick = function(){
+var div = this.parentElement
+div.style.display = "none"
+}
+var list = document.querySelector('ul')
+list.addEventListener('click', function(a){
+if (a.target.tagName === 'LI'){
+a.target.classList.toggle('checked')
+}
+})
+}
+function add(){
+var text=document.getElementById('task').value
+var li=document.createElement('li')
+var newList=document.createTextNode(text)
+li.appendChild(newList)
+if (text === '') {
+    alert("You must write something!")
+  } else {
+    document.getElementById("myUL").appendChild(li)
+  }
+var span = document.createElement("SPAN")
+var txt = document.createTextNode("\u00D7")
+span.className = "close"
+span.appendChild(txt)
+li.appendChild(span)
+var close = document.getElementsByClassName("close")
+for (i = 0; i < close.length; i++){
+close[i].onclick = function(){
+var div = this.parentElement
+div.style.display = "none"
+}
+}
+}
+    </script>
+</body>
+</html>
